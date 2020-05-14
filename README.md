@@ -1,3 +1,3 @@
 # PracticeProblems
 
-All the codeing problems that I practice goes in this repository
+All the coding problems and challenges completed goes in this repository
