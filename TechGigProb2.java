@@ -3,7 +3,7 @@
  
 import java.io.*;
 import java.util.*;
-public class CandidateCode {
+public class TechGigProb2 {
   public static void main(String args[] ) throws Exception {
      Scanner sc = new Scanner(System.in);
      String testCases = sc.nextLine();
