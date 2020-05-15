@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class MyClass {
+public class ExpediaChallenge {
     public static void main(String args[]) {
       
       String input = "{[(])}";
