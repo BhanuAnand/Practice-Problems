@@ -3,7 +3,7 @@ import java.io.*;
 import java.util.*;
 public class TechGigProb2 {
   public static void main(String args[] ) throws Exception {
-     Scanner sc = new Scanner(System.in);
+      Scanner sc = new Scanner(System.in);
       String testCases = sc.nextLine();
       int T = Integer.parseInt(testCases);
       
@@ -32,24 +32,25 @@ public class TechGigProb2 {
          }
    
          for(int j=0; j<N; j++){        
-            long curr = t1Arr[j];
+            
             long base = t2Arr[j];
             int idx = -1;
             for(int k=0; k<N; k++){
+               long curr = t1Arr[j];
                long next = t1Arr[k];
                if((curr<base || (curr>base && next<curr)) && next>base && !set.contains(k)){
                   idx = k;
+                  long temp = t1Arr[idx];
+                  t1Arr[idx] = t1Arr[j];
+                  t1Arr[j] = temp;                 
                }
             }
             if(idx!=-1){
-               long temp = t1Arr[idx];
-               t1Arr[idx] = t1Arr[j];
-               t1Arr[j] = temp;
                set.add(j); 
             }
          }     
    
-         for(int k=0;k<N;k++){       
+         for(int k=0;k<N;k++){
             if(t1Arr[k]>t2Arr[k]){
                result++;
             }
