@@ -1,5 +1,3 @@
-
-/* Read input from STDIN. Print your output to STDOUT*/
  
 import java.io.*;
 import java.util.*;
