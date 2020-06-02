@@ -2,6 +2,7 @@ import java.util.*;
 
 public class TreeSideView{
 	Node root;
+	static int max_level = 0;
 	TreeSideView(){
 		this.root = null;
 	}
@@ -15,7 +16,7 @@ public class TreeSideView{
 		}
 	}
 
-	public static void sideView(Node node){
+	/*public static void sideView(Node node){
 		Queue<Node> q = new LinkedList<Node>();
 		q.add(node);
 		while(!q.isEmpty()){
@@ -40,16 +41,32 @@ public class TreeSideView{
 				q.add(tempNode.right);
 			}
 		}
+	}*/
+	
+	public static void leftView(Node node,int level){
+	    
+	    if(node == null){
+	        return;
+	    }
+	    
+	    if(max_level<level){
+	        System.out.print(node.data);
+	        max_level = level;
+	    }
+	    
+	    leftView(node.left,level+1);
+	    leftView(node.right,level+1);
 	}
 	
 	public static void main(String[] args){
-		    TreeSideView tree = new TreeSideView();
-		    tree.root = new Node(1);
+		TreeSideView tree = new TreeSideView();
+		tree.root = new Node(1);
         tree.root.left = new Node(2);
         tree.root.right = new Node(3);
         tree.root.right.left = new Node(4);
         tree.root.right.right = new Node(5);
-		    sideView(tree.root);
+		//sideView(tree.root);
+		leftView(tree.root,1);
 	}
 
 }
