@@ -46,13 +46,13 @@ public class BTNodesSumAtKLevel{
 	}
 	
 	public static void main(String[] args){
-		    BTNodesSumAtKLevel tree = new BTNodesSumAtKLevel();
-		    tree.root = new Node(1);
-        tree.root.left = new Node(2);
-        tree.root.right = new Node(3);
-        tree.root.left.left = new Node(4);
-        tree.root.left.right = new Node(5);                                                                         
-		    sumAtKLevel(tree.root,2);
+		BTNodesSumAtKLevel tree = new BTNodesSumAtKLevel();
+		tree.root = new Node(1);
+		tree.root.left = new Node(2);
+		tree.root.right = new Node(3);
+		tree.root.left.left = new Node(4);
+		tree.root.left.right = new Node(5);
+		sumAtKLevel(tree.root,2);
 	}
 
 }
