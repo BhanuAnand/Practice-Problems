@@ -20,7 +20,7 @@ public class SubarrayWithGivenSum {
         if(curr_sum == sum){
             System.out.println("indices are " + l + " and " + h);
         }else{
-            System.out.println("cannot find a subaary with the given sum val");
+            System.out.println("cannot find a subarray with the given sum");
         }
       
     }
