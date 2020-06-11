@@ -1,15 +1,17 @@
+/* Read input from STDIN. Print your output to STDOUT*/
+
  
 import java.io.*;
 import java.util.*;
-public class TechGigProb2 {
+public class CandidateCode {
   public static void main(String args[] ) throws Exception {
       Scanner sc = new Scanner(System.in);
       String testCases = sc.nextLine();
       int T = Integer.parseInt(testCases);
       
       for(int i=1; i<=T; i++){
-         //System.out.print(T);
-         int result = 0; int a=0,b=0;
+
+         int result=0,a=0,b=0;
          String teamSize = sc.nextLine();
          int N = Integer.parseInt(teamSize);
          String team1 = sc.nextLine();
@@ -19,7 +21,6 @@ public class TechGigProb2 {
          
          long[] t1Arr = new long[N];
          long[] t2Arr = new long[N];
-         HashSet<Integer> set = new HashSet<>();
          
          for(String s : t1){
             t1Arr[a] = Long.parseLong(s);
@@ -31,35 +32,40 @@ public class TechGigProb2 {
             b++;
          }
    
-         for(int j=0; j<N; j++){        
+         boolean[] isVisited = new boolean[N];
+         for(int j=0; j<N; j++){
+            int idx = bestMatchIndex(t2Arr[j], t1Arr, isVisited);
             
-            long base = t2Arr[j];
-            int idx = -1;
-            for(int k=0; k<N; k++){
-               long curr = t1Arr[j];
-               long next = t1Arr[k];
-               if((curr<base || (curr>base && next<curr)) && next>base && !set.contains(k)){
-                  idx = k;
-                  long temp = t1Arr[idx];
-                  t1Arr[idx] = t1Arr[j];
-                  t1Arr[j] = temp;                 
-               }
+            if(idx != -1){
+                long temp = t1Arr[idx];
+                t1Arr[idx] = t1Arr[j];
+                t1Arr[j] = temp;
             }
-            if(idx!=-1){
-               set.add(j); 
-            }
-         }     
-   
-         for(int k=0;k<N;k++){
+         }
+
+         for(int k=0; k<N; k++){
             if(t1Arr[k]>t2Arr[k]){
                result++;
             }
-         }
-            
-         System.out.println(result);
-      }
-    
+         }        
+         System.out.println(result);             
+      }   
   }
+
+  static int bestMatchIndex(long base, long[] arr, boolean[] isVisited){
+         long minVal = Long.MAX_VALUE; int minIdx = -1;
+         for(int k=0; k<arr.length; k++){
+            if(arr[k]>base && arr[k]<minVal && !isVisited[k]){
+               minVal = arr[k];
+               minIdx = k;
+            }
+         }
+         if(minVal != Long.MAX_VALUE){
+            isVisited[minIdx] = true;
+         }
+         return minIdx;
+    }
+
 }
  
 
