@@ -1,0 +1,43 @@
+import java.util.*;
+
+public class MaxBookedHotelRoom {
+    public static void main(String args[]) {
+      String[] arr = { "+1A", "+6B", "+2C", "-1A", "-6B", "+6B", "-2C", "+2C" };
+      System.out.println(maxBooked(arr));
+    }
+    
+    public static String maxBooked(String[] strArr){
+
+    	HashMap<String,Integer> map = new HashMap<>();
+    	for(int i=0; i<strArr.length; i++){
+    		String str = ""+strArr[i].charAt(1)+strArr[i].charAt(2);
+    		String isBooked = Character.toString(strArr[i].charAt(0));
+    		if("+".equals(isBooked) && map.containsKey(str)){
+    			int val = map.get(str);
+    			val += 1;
+    			map.put(str,val);
+    		}else{
+    			map.put(str,1);
+    		}
+    	}
+    
+    	int maxBooking = 0;
+    	String maxBookedRoom = "";
+    	for(Map.Entry<String,Integer> entry : map.entrySet()){
+    		if(entry.getValue()>maxBooking){
+    			maxBooking = entry.getValue();
+                maxBookedRoom = entry.getKey();
+    		}else if(entry.getValue()==maxBooking){
+    			String key = entry.getKey();
+    			if(key.compareTo(maxBookedRoom)<1){
+    				maxBooking = entry.getValue();
+                    maxBookedRoom = entry.getKey();
+    			}
+    		}
+    	}
+    
+    	return maxBookedRoom;
+
+    }
+
+}
